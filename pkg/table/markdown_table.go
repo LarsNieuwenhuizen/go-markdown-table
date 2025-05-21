@@ -41,6 +41,14 @@ func (m *MarkdownTable) AddHeaderColumnsFromStringSlice(slice []string) {
 	}
 }
 
+func (m *MarkdownTable) AddRowFromStringSlice(slice []string) {
+	row := Row{}
+	for _, value := range slice {
+		row.Columns = append(row.Columns, Column{Value: value})
+	}
+	m.AddRow(row)
+}
+
 func (m *MarkdownTable) AddHeaderColumns(columns []HeaderColumn) {
 	for _, column := range columns {
 		m.HeaderColumns = append(m.HeaderColumns, column)
