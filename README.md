@@ -14,13 +14,25 @@ Create a table with header columns:
 
 In your main.go file
 ```go
+package main
+
+import (
+	"fmt"
+	markdownTable "github.com/LarsNieuwenhuizen/go-markdown-table"
+)
+
 func main() {
 	table := markdownTable.InitiateMarkdownTable()
 	headerStringSlice := []string{
 		"Name",
 		"Description",
 	}
+	rowStringSlice := []string{
+		"My name",
+		"My description",
+	}
 	table.AddHeaderColumnsFromStringSlice(headerStringSlice)
+	table.AddRowFromStringSlice(rowStringSlice)
 
 	fmt.Println(table.ToString())
 }
@@ -33,6 +45,7 @@ go run main.go
 Result:
 
 ```markdown
-| Name | Description |
-|------|-------------|
+| Name    | Description    |
+|---------|----------------|
+| My name | My description |
 ```
