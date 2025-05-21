@@ -1,4 +1,4 @@
-package ci
+package markdownTable
 
 import (
 	"fmt"
@@ -33,6 +33,12 @@ func (m *MarkdownTable) AddRow(row Row) {
 
 func (m *MarkdownTable) AddHeaderColumn(column HeaderColumn) {
 	m.HeaderColumns = append(m.HeaderColumns, column)
+}
+
+func (m *MarkdownTable) AddHeaderColumnsFromStringSlice(slice []string) {
+	for _, column := range slice {
+		m.AddHeaderColumn(HeaderColumn{Name: column})
+	}
 }
 
 func (m *MarkdownTable) AddHeaderColumns(columns []HeaderColumn) {
